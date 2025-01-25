@@ -10,6 +10,12 @@ logging.basicConfig(level=logging.INFO)
 def lambda_handler(event, context):
     print("Evento recibido: ", event)
     logging.info(f"Evento recibido: {event}")
+    if "body" in event:
+        event = (
+            json.loads(event["body"])
+            if isinstance(event["body"], str)
+            else event["body"]
+        )
 
     event_type = event.get("type")
     if not event_type:
