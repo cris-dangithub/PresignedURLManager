@@ -8,6 +8,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 def lambda_handler(event, context):
+    print("Evento recibido: ", event)
     logging.info(f"Evento recibido: {event}")
 
     event_type = event.get("type")
